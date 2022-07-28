@@ -1,3 +1,5 @@
+import 'cross-fetch/polyfill';
+
 import test from 'ava';
 
 import { PocketSimulator, ResponseType } from './server';

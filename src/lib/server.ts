@@ -1,6 +1,14 @@
-import fetch from 'cross-fetch';
-
 import { Simulation } from './simulation';
+
+/**
+ * We expect fetch to be available since this is typically used in browsers.
+ *
+ * We polyfill it for tests.
+ */
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  export const fetch: any;
+}
 
 /**
  * Server Response Type.
@@ -111,6 +119,7 @@ export class PocketSimulator {
       return { type: ResponseType.Error, error };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
+      console.log('ERROR: ', e);
       return { error: e.message, type: ResponseType.Error };
     }
   }
