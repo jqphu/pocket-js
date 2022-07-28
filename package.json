@@ -1,6 +1,6 @@
 {
   "name": "pocket-js",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A JavaScript library to interface with the PocketUniv",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
