@@ -1,6 +1,6 @@
 {
   "name": "pocket-universe-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A JavaScript library to interface with the PocketUnivse",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -42,8 +42,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@types/node-fetch": "^2.6.2",
-    "axios": "^0.27.2"
+    "cross-fetch": "^3.1.5"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",

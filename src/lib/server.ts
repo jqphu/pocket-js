@@ -1,4 +1,4 @@
-import axios from 'axios';
+import fetch from 'cross-fetch';
 
 import { Simulation } from './simulation';
 
@@ -74,19 +74,26 @@ export class PocketSimulator {
 
   async simulate(args: SimulationArgs): Promise<Response> {
     try {
-      console.log(`${this.SERVER_URL}/simulate`);
-      const result = await axios.post(`${this.SERVER_URL}/simulate`, {
-        chainId: args.chainId,
-        transaction: {
-          from: args.from,
-          to: args.to,
-          data: args.data,
-          value: args.value,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const result: any = await fetch(`${this.SERVER_URL}/simulate`, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          chainId: args.chainId,
+          transaction: {
+            from: args.from,
+            to: args.to,
+            data: args.data,
+            value: args.value,
+          },
+        }),
       });
 
       if (result.status === 200) {
-        const data = result.data;
+        const data = await result.json();
 
         if (data.success) {
           return {
@@ -100,7 +107,7 @@ export class PocketSimulator {
         };
       }
 
-      const { error } = result.data;
+      const { error } = await result.json();
       return { type: ResponseType.Error, error };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
