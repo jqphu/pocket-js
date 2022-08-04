@@ -17,7 +17,8 @@ test('basic simulation', async (t) => {
 });
 
 test('verified contract', async (t) => {
-  const pocket = new PocketSimulator('http://localhost:4000/v1');
+  // TODO(jqphu): update this to the production API when it is deployed.
+  const pocket = new PocketSimulator('https://dev.api.pocketuniverse.app/v1');
   const result = await pocket.simulate({
     chainId: '0x1',
     from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
@@ -26,7 +27,6 @@ test('verified contract', async (t) => {
     value: '0x0',
   });
 
-  console.log(result);
-
   t.is(result.type, ResponseType.Success);
+  t.is(result?.simulation?.verifiedAddressName, 'Thingdoms NFT Official');
 });
