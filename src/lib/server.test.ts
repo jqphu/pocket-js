@@ -15,3 +15,18 @@ test('basic simulation', async (t) => {
 
   t.is(result.type, ResponseType.Success);
 });
+
+test('verified contract', async (t) => {
+  const pocket = new PocketSimulator('http://localhost:4000/v1');
+  const result = await pocket.simulate({
+    chainId: '0x1',
+    from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
+    to: '0x0aa7420c43b8c1a7b165d216948870c8ecfe1ee1',
+    data: '0x23b872dd000000000000000000000000b722dbfbbc8819d8f9461ecd013f9793af5ba7ac00000000000000000000000085c153aae1f101af08151863306d9e0b823ea1b50000000000000000000000000000000000000000000000000000000000001459',
+    value: '0x0',
+  });
+
+  console.log(result);
+
+  t.is(result.type, ResponseType.Success);
+});

@@ -15,7 +15,14 @@ export class Simulation {
     /**
      * Events found in this simulation.
      */
-    public readonly events: readonly Event[]
+    public readonly events: readonly Event[],
+
+    /**
+     * Name of the contract/interacting address if it has been verified.
+     *
+     * This is only if the contract is verified by PocketUniverse.
+     */
+    public readonly verifiedAddressName?: string
   ) {}
 
   /**
@@ -26,7 +33,8 @@ export class Simulation {
     return new Simulation(
       obj.date,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      obj.events.flatMap((event: any) => Event.fromJSON(event))
+      obj.events.flatMap((event: any) => Event.fromJSON(event)),
+      obj.verifiedAddressName
     );
   }
 }
