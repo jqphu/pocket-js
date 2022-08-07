@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/jqphu/pocket-js/compare/v0.0.5...v0.0.7) (2022-08-07)
+
+
+### Features
+
+* update to a new version of the SDK ([77c320a](https://github.com/jqphu/pocket-js/commit/77c320a46302fd6a3803e9ba090eac5fa9f7cb4a))
+
+
+### Bug Fixes
+
+* update test to run on dev server ([2df808c](https://github.com/jqphu/pocket-js/commit/2df808c5224251b4c8828a1428cf9d3b1c1431b4))
+
 ### 0.0.5 (2022-08-04)
 
 
