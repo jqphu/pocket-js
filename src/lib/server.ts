@@ -1,4 +1,4 @@
-import { Simulation } from './simulation';
+import { Transaction, Simulation } from './models'
 
 /**
  * We expect fetch to be available since this is typically used in browsers.
@@ -15,13 +15,9 @@ declare global {
  */
 export enum ResponseType {
   /**
-   * Simulation was successful.
+   * Response was valid.
    */
   Success = 'success',
-  /**
-   * Simulation was ran but reverted.
-   */
-  Revert = 'revert',
   /**
    * Unable to simulate, unexpected error.
    */
@@ -38,35 +34,6 @@ export type Response = {
   readonly error?: string;
 };
 
-export type SimulationArgs = {
-  /**
-   * ChainID of the network.
-   *
-   * Only Ethereum mainnet is currently supported.
-   */
-  readonly chainId: string;
-
-  /**
-   * Address we are sending from
-   */
-  readonly from: string;
-
-  /**
-   * Address we are sending to.
-   */
-  readonly to: string;
-
-  /**
-   * Optional data to send.
-   */
-  readonly data?: string;
-
-  /**
-   * Optional value to send.
-   */
-  readonly value?: string;
-};
-
 /**
  * PocketUniverse Simulator.
  */
@@ -75,12 +42,12 @@ export class PocketSimulator {
     /**
      * URL of the PocketUniverse Server.
      *
-     * e.g. `https://api.pocketuniverse.app/v1`
+     * e.g. `https://eth.pocketuniverse.app/v2`
      */
     readonly SERVER_URL: string
-  ) {}
+  ) { }
 
-  async simulate(args: SimulationArgs): Promise<Response> {
+  async simulate(args: Transaction): Promise<Response> {
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const result: any = await fetch(`${this.SERVER_URL}/simulate`, {
@@ -90,36 +57,30 @@ export class PocketSimulator {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          chainId: args.chainId,
-          transaction: {
-            from: args.from,
-            to: args.to,
-            data: args.data,
-            value: args.value,
-          },
+          from: args.from,
+          to: args.to,
+          data: args.data,
+          value: args.value,
         }),
       });
+
 
       if (result.status === 200) {
         const data = await result.json();
 
-        if (data.success) {
-          return {
-            type: ResponseType.Success,
-            simulation: Simulation.fromJSON(data.simulation),
-          };
-        }
         return {
-          type: ResponseType.Revert,
-          error: data.error,
+          type: ResponseType.Success,
+          simulation: data,
         };
       }
 
-      const { error } = await result.json();
+      // Error string sent from server.
+      const error = await result.text();
       return { type: ResponseType.Error, error };
+
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
-      console.log('ERROR: ', e);
+      console.warn('Error: ', e);
       return { error: e.message, type: ResponseType.Error };
     }
   }
