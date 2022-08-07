@@ -4,7 +4,7 @@ A JavaScript library to interface with the PocketUniverse
 
 This library will run a simulation and return the asset changes.
 
-We handle the standard ERC20, ERC721, ERC1155 but we also handle ERC2309 as an extension. We handle things like WETH having custom despoit/withdraw events. Essentially, we try to handle everything that is an asset change.
+We handle the standard ERC20, ERC721, ERC1155 but we also handle ERC2309 as an extension. We handle things like WETH having custom deposit/withdraw events. Essentially, we try to handle everything that is an asset change.
 
 Take a look at `src/models` to see how the data is returned.
 

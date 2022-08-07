@@ -1,4 +1,4 @@
-import { Transaction, Simulation } from './models'
+import { Simulation, Transaction } from './models';
 
 /**
  * We expect fetch to be available since this is typically used in browsers.
@@ -45,7 +45,7 @@ export class PocketSimulator {
      * e.g. `https://eth.pocketuniverse.app/v2`
      */
     readonly SERVER_URL: string
-  ) { }
+  ) {}
 
   async simulate(args: Transaction): Promise<Response> {
     try {
@@ -63,7 +63,6 @@ export class PocketSimulator {
           value: args.value,
         }),
       });
-
 
       if (result.status === 200) {
         const data = await result.json();
