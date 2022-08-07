@@ -16,7 +16,6 @@ Standard
 * event Transfer(address indexed from, address indexed to, uint256 value);
 * event Approval(address indexed owner, address indexed spender, uint256 value);
 
-Weth
 WETH Deposit and Withdrawal events will be converted into a Transfer.
 * event Deposit(address indexed dst, uint wad);
 * event Withdrawal(address indexed src, uint wad);
