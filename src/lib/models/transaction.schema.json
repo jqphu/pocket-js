@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Transaction",
+  "description": "Transaction to be simulated.",
+  "type": "object",
+  "required": [
+    "data",
+    "from",
+    "to",
+    "value"
+  ],
+  "properties": {
+    "data": {
+      "description": "Data to send.\n\nThis is a byte hex string prefixed with 0x.",
+      "type": "string"
+    },
+    "from": {
+      "description": "Address from.",
+      "type": "string",
+      "format": "hex (h160)"
+    },
+    "to": {
+      "description": "Address to.",
+      "type": "string",
+      "format": "hex (h160)"
+    },
+    "value": {
+      "description": "Value to send.",
+      "type": "string",
+      "format": "hex (u256)"
+    }
+  }
+}

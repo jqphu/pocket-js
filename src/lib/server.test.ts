@@ -8,7 +8,7 @@ import { Simulation } from './models';
 import { PocketSimulator, Response, ResponseType } from './server';
 
 test('weth_deposit', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
     to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -17,14 +17,14 @@ test('weth_deposit', async (t) => {
   });
 
   const expected = {
-    type: 'Success',
+    type: 'success',
     erc20: {
       '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
         {
+          type: 'transfer',
           amount: '0x2ba7def3000',
           from: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-          type: 'Transfer',
         },
       ],
     },
@@ -45,7 +45,7 @@ test('weth_deposit', async (t) => {
 });
 
 test('weth_withdrawal', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
     to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -56,11 +56,11 @@ test('weth_withdrawal', async (t) => {
   const expected = {
     type: 'success',
     simulation: {
-      type: 'Success',
+      type: 'success',
       erc20: {
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
           {
-            type: 'Transfer',
+            type: 'transfer',
             from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
             to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
             amount: '0x11e1a300',
@@ -83,7 +83,7 @@ test('weth_withdrawal', async (t) => {
 });
 
 test('erc721_transfer_out', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
     to: '0x05844e9ae606f9867ae2047c93cac370d54ab2e1',
@@ -94,18 +94,18 @@ test('erc721_transfer_out', async (t) => {
   const expected = {
     type: 'success',
     simulation: {
-      type: 'Success',
+      type: 'success',
       erc20: {},
       erc721: {
         '0x05844e9ae606f9867ae2047c93cac370d54ab2e1': [
           {
-            type: 'Approval',
+            type: 'approval',
             from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
             to: '0x0000000000000000000000000000000000000000',
             id: '0x1a46',
           },
           {
-            type: 'Transfer',
+            type: 'transfer',
             from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
             to: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
             id: '0x1a46',
@@ -121,7 +121,7 @@ test('erc721_transfer_out', async (t) => {
 });
 
 test('erc721_approval', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
     to: '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85',
@@ -132,12 +132,12 @@ test('erc721_approval', async (t) => {
   const expected = {
     type: 'success',
     simulation: {
-      type: 'Success',
+      type: 'success',
       erc20: {},
       erc721: {
         '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85': [
           {
-            type: 'Approval',
+            type: 'approval',
             from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
             to: '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85',
             id: '0xe5aaf1f0d5eb87bdcade54651eebce42a3405bc2ef64fa9963c58ae6e4126c33',
@@ -152,7 +152,7 @@ test('erc721_approval', async (t) => {
 });
 
 test('approval for all', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
     to: '0x0aa7420c43b8c1a7b165d216948870c8ecfe1ee1',
@@ -161,12 +161,12 @@ test('approval for all', async (t) => {
   });
 
   const expected = {
-    type: 'Success',
+    type: 'success',
     erc20: {},
     erc721: {
       '0x0aa7420c43b8c1a7b165d216948870c8ecfe1ee1': [
         {
-          type: 'ApprovalForAll',
+          type: 'approvalForAll',
           from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
           to: '0x1e0049783f008a0085193e00003d00cd54003c71',
           approved: true,
@@ -183,7 +183,7 @@ test('approval for all', async (t) => {
 });
 
 test('erc721 revert', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
     to: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
@@ -194,7 +194,7 @@ test('erc721 revert', async (t) => {
   const expected = {
     type: 'success',
     simulation: {
-      type: 'Revert',
+      type: 'revert',
       message: 'ERC721: approve caller is not owner nor approved for all',
     },
   } as Response;
@@ -203,7 +203,7 @@ test('erc721 revert', async (t) => {
 });
 
 test('erc1155 transfer batch', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
     to: '0xc464839b6287e90a514a577f6da17b3f3f202671',
@@ -214,13 +214,13 @@ test('erc1155 transfer batch', async (t) => {
   const expected = {
     type: 'success',
     simulation: {
-      type: 'Success',
+      type: 'success',
       erc20: {},
       erc721: {},
       erc1155: {
         '0xc464839b6287e90a514a577f6da17b3f3f202671': [
           {
-            type: 'TransferBatch',
+            type: 'transferBatch',
             operator: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
             from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
             to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
@@ -237,7 +237,7 @@ test('erc1155 transfer batch', async (t) => {
 });
 
 test('opensea accept offer', async (t) => {
-  const pocket = new PocketSimulator('https://eth.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
   const result = await pocket.simulate({
     from: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
     to: '0x00000000006c3852cbef3e08e8df289169ede581',
@@ -248,11 +248,11 @@ test('opensea accept offer', async (t) => {
   const expected = {
     type: 'success',
     simulation: {
-      type: 'Success',
+      type: 'success',
       erc20: {
         '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
           {
-            type: 'Transfer',
+            type: 'transfer',
             from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
             to: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
             amount: '0x1f161421c8e000',
@@ -262,7 +262,7 @@ test('opensea accept offer', async (t) => {
       erc721: {
         '0xb7116e0603f961b2ef2e924aa4706ad0ac1b7b2c': [
           {
-            type: 'Transfer',
+            type: 'transfer',
             from: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
             to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
             id: '0x1388',

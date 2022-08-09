@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/jqphu/pocket-js/compare/v0.1.1...v0.2.0) (2022-08-09)
+
+### [0.1.1](https://github.com/jqphu/pocket-js/compare/v0.0.11...v0.1.1) (2022-08-09)
+
+### [0.0.11](https://github.com/jqphu/pocket-js/compare/v0.0.9...v0.0.11) (2022-08-09)
+
+
+### Bug Fixes
+
+* modify models again ([d7d6cde](https://github.com/jqphu/pocket-js/commit/d7d6cde88be94170188b9bbd98039ab4c1add2b7))
+
 ### [0.0.9](https://github.com/jqphu/pocket-js/compare/v0.0.7...v0.0.9) (2022-08-08)
 
 
