@@ -23,7 +23,7 @@ export type ERC1155 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "transferSingle";
+      type: 'transferSingle';
       /**
        * Number in hex prefixed by 0x.
        */
@@ -44,7 +44,7 @@ export type ERC1155 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "transferBatch";
+      type: 'transferBatch';
       value: string[];
       [k: string]: unknown;
     }
@@ -58,7 +58,7 @@ export type ERC1155 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "approvalForAll";
+      type: 'approvalForAll';
       [k: string]: unknown;
     };
 export type ERC20 =
@@ -75,7 +75,7 @@ export type ERC20 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "transfer";
+      type: 'transfer';
       [k: string]: unknown;
     }
   | {
@@ -91,7 +91,7 @@ export type ERC20 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "approval";
+      type: 'approval';
       [k: string]: unknown;
     };
 export type ERC721 =
@@ -108,7 +108,7 @@ export type ERC721 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "transfer";
+      type: 'transfer';
       [k: string]: unknown;
     }
   | {
@@ -124,7 +124,7 @@ export type ERC721 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "approval";
+      type: 'approval';
       [k: string]: unknown;
     }
   | {
@@ -137,7 +137,7 @@ export type ERC721 =
        * Ethereum address in hex prefixed with 0x.
        */
       to: string;
-      type: "approvalForAll";
+      type: 'approvalForAll';
       [k: string]: unknown;
     }
   | {
@@ -157,7 +157,7 @@ export type ERC721 =
        * Number in hex prefixed by 0x.
        */
       to_id: string;
-      type: "consecutiveTransfer";
+      type: 'consecutiveTransfer';
       [k: string]: unknown;
     };
 
