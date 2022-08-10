@@ -21,10 +21,12 @@
     "sandboxed",
     "transpiled",
     "typedoc",
-    "untracked"
+    "untracked",
+    "jqphu"
   ],
   "flagWords": [],
   "ignorePaths": [
+    "src/lib/server.test.ts",
     "package.json",
     "package-lock.json",
     "yarn.lock",
