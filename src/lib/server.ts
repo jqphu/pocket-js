@@ -1,4 +1,4 @@
-import { Simulation, Transaction } from './models';
+import { Result, Transaction } from './models';
 
 /**
  * We expect fetch to be available since this is typically used in browsers.
@@ -10,28 +10,15 @@ declare global {
   export const fetch: any;
 }
 
-/**
- * Server Response Type.
- */
-export enum ResponseType {
-  /**
-   * Response was valid.
-   */
-  Success = 'success',
-  /**
-   * Unable to simulate, unexpected error.
-   */
-  Error = 'error',
-}
+export type SimulateOptions = {
+  // Whether or not to retrieve metadata.
+  //
+  // Defaults to true.
+  metadata: boolean;
+};
 
-export type Response = {
-  readonly type: ResponseType;
-
-  // Only set on success.
-  readonly simulation?: Simulation;
-
-  // Might be set on error.
-  readonly error?: string;
+export const OPTIONS_DEFAULTS: SimulateOptions = {
+  metadata: true,
 };
 
 /**
@@ -42,45 +29,37 @@ export class PocketSimulator {
     /**
      * URL of the PocketUniverse Server.
      *
-     * e.g. `https://eth.pocketuniverse.app/v2`
+     * e.g. `https://eth1.pocketuniverse.app/v2`
      */
     readonly SERVER_URL: string
   ) {}
 
-  async simulate(args: Transaction): Promise<Response> {
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const result: any = await fetch(`${this.SERVER_URL}/simulate`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: args.from,
-          to: args.to,
-          data: args.data,
-          value: args.value,
-        }),
-      });
+  async simulate(
+    transaction: Transaction,
+    options: SimulateOptions = OPTIONS_DEFAULTS
+  ): Promise<Result> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const result: any = await fetch(`${this.SERVER_URL}/simulate`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        transaction,
+        options,
+      }),
+    });
 
-      if (result.status === 200) {
-        const data = await result.json();
+    if (result.status === 200) {
+      const data = await result.json();
 
-        return {
-          type: ResponseType.Success,
-          simulation: data,
-        };
-      }
+      return data;
+    } else {
+      // This should really never happen, we don't return 201, 202, etc.
 
-      // Error string sent from server.
-      const error = await result.text();
-      return { type: ResponseType.Error, error };
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (e: any) {
-      console.warn('Error: ', e);
-      return { error: e.message, type: ResponseType.Error };
+      // Throw the error.
+      throw { error: `unexpected status code ${result.status}` };
     }
   }
 }

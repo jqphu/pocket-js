@@ -38,7 +38,9 @@
     "reset-hard": "git clean -dfx && git reset --hard && yarn",
     "prepare-release": "run-s reset-hard test cov:check doc:html version doc:publish"
   },
-  "dependencies": {},
+  "dependencies": {
+    "alchemy-sdk": "^2.0.1"
+  },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",

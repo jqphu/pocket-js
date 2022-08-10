@@ -1,5 +1,6 @@
+import type { Nft, NftContract, TokenMetadataResponse } from 'alchemy-sdk';
+
 import type { Simulation } from './simulation';
-import type { NftContract, Nft, TokenMetadataResponse } from 'alchemy-sdk';
 
 /**
  * Result of a simulation that optionally includes metadata.
@@ -13,7 +14,7 @@ export type Result = {
   /**
    * Simulation that ran.
    */
-  simulation: Simulation
+  simulation: Simulation;
   /**
    * Optional metadata.
    */
@@ -51,4 +52,5 @@ export type NftMetadata = {
   nfts: Record<string, Nft>;
 };
 
-
+// TODO(jqphu): wrap these in pocket universe types and don't expose alchemy directly.
+export type { NftContract, Nft, TokenMetadataResponse } from 'alchemy-sdk';
