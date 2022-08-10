@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Transaction to be simulated.</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -73,6 +80,15 @@
 						<span class="target">Transaction</span>
 					</li>
 				</ul>
+			</section>
+			<section class="tsd-panel tsd-kind-interface">
+				<h3 class="tsd-before-signature">Indexable</h3>
+				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>k: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">unknown</span></div>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Transaction to be simulated.</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
@@ -98,9 +114,15 @@
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/Transaction.ts#L3">lib/models/Transaction.ts:3</a></li>
+							<li>Defined in lib/models/transaction.ts:17</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Data to send.</p>
+						</div>
+						<p>This is a byte hex string prefixed with 0x.</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="from" class="tsd-anchor"></a>
@@ -108,9 +130,14 @@
 					<div class="tsd-signature tsd-kind-icon">from<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/Transaction.ts#L3">lib/models/Transaction.ts:3</a></li>
+							<li>Defined in lib/models/transaction.ts:21</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Address from.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="to" class="tsd-anchor"></a>
@@ -118,9 +145,14 @@
 					<div class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/Transaction.ts#L3">lib/models/Transaction.ts:3</a></li>
+							<li>Defined in lib/models/transaction.ts:25</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Address to.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="value" class="tsd-anchor"></a>
@@ -128,9 +160,14 @@
 					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/Transaction.ts#L3">lib/models/Transaction.ts:3</a></li>
+							<li>Defined in lib/models/transaction.ts:29</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Value to send.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -144,23 +181,11 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/responsetype.html" class="tsd-kind-icon">Response<wbr>Type</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="../classes/pocketsimulator.html" class="tsd-kind-icon">Pocket<wbr>Simulator</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="approval.html" class="tsd-kind-icon">Approval</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="approvalforall.html" class="tsd-kind-icon">Approval<wbr>For<wbr>All</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="assetchanges.html" class="tsd-kind-icon">Asset<wbr>Changes</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="consecutivetransfer.html" class="tsd-kind-icon">Consecutive<wbr>Transfer</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="native.html" class="tsd-kind-icon">Native</a>
@@ -186,15 +211,6 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="transfer.html" class="tsd-kind-icon">Transfer</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="transferbatch.html" class="tsd-kind-icon">Transfer<wbr>Batch</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="transfersingle.html" class="tsd-kind-icon">Transfer<wbr>Single</a>
-					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#erc1155" class="tsd-kind-icon">ERC1155</a>
 					</li>
@@ -205,10 +221,22 @@
 						<a href="../globals.html#erc721" class="tsd-kind-icon">ERC721</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="../globals.html#response" class="tsd-kind-icon">Response</a>
+						<a href="../globals.html#metadata" class="tsd-kind-icon">Metadata</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#nftmetadata" class="tsd-kind-icon">Nft<wbr>Metadata</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#result" class="tsd-kind-icon">Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../globals.html#simulateoptions" class="tsd-kind-icon">Simulate<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#simulation" class="tsd-kind-icon">Simulation</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="../globals.html#options_defaults" class="tsd-kind-icon">OPTIONS_<wbr>DEFAULTS</a>
 					</li>
 				</ul>
 			</nav>

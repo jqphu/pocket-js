@@ -74,12 +74,6 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Enumerations</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum"><a href="enums/responsetype.html" class="tsd-kind-icon">Response<wbr>Type</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Classes</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-class"><a href="classes/pocketsimulator.html" class="tsd-kind-icon">Pocket<wbr>Simulator</a></li>
@@ -88,15 +82,9 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface"><a href="interfaces/approval.html" class="tsd-kind-icon">Approval</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/approvalforall.html" class="tsd-kind-icon">Approval<wbr>For<wbr>All</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/assetchanges.html" class="tsd-kind-icon">Asset<wbr>Changes</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/consecutivetransfer.html" class="tsd-kind-icon">Consecutive<wbr>Transfer</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/native.html" class="tsd-kind-icon">Native</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/transaction.html" class="tsd-kind-icon">Transaction</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/transfer.html" class="tsd-kind-icon">Transfer</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/transferbatch.html" class="tsd-kind-icon">Transfer<wbr>Batch</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/transfersingle.html" class="tsd-kind-icon">Transfer<wbr>Single</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -105,8 +93,17 @@
 								<li class="tsd-kind-type-alias"><a href="globals.html#erc1155" class="tsd-kind-icon">ERC1155</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#erc20" class="tsd-kind-icon">ERC20</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#erc721" class="tsd-kind-icon">ERC721</a></li>
-								<li class="tsd-kind-type-alias"><a href="globals.html#response" class="tsd-kind-icon">Response</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#metadata" class="tsd-kind-icon">Metadata</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#nftmetadata" class="tsd-kind-icon">Nft<wbr>Metadata</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#result" class="tsd-kind-icon">Result</a></li>
+								<li class="tsd-kind-type-alias"><a href="globals.html#simulateoptions" class="tsd-kind-icon">Simulate<wbr>Options</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#simulation" class="tsd-kind-icon">Simulation</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal"><a href="globals.html#options_defaults" class="tsd-kind-icon">OPTIONS_<wbr>DEFAULTS</a></li>
 							</ul>
 						</section>
 					</div>
@@ -117,53 +114,167 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="erc1155" class="tsd-anchor"></a>
 					<h3>ERC1155</h3>
-					<div class="tsd-signature tsd-kind-icon">ERC1155<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"TransferSingle"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/transfersingle.html" class="tsd-signature-type">TransferSingle</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"TransferBatch"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/transferbatch.html" class="tsd-signature-type">TransferBatch</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ApprovalForAll"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/approvalforall.html" class="tsd-signature-type">ApprovalForAll</a><span class="tsd-signature-symbol">)</span></div>
+					<div class="tsd-signature tsd-kind-icon">ERC1155<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>operator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"transferSingle"</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>operator<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"transferBatch"</span><span class="tsd-signature-symbol">; </span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>approved<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"approvalForAll"</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/erc1155/ERC1155.ts#L6">lib/models/erc1155/ERC1155.ts:6</a></li>
+							<li>Defined in lib/models/simulation.ts:46</li>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/models/asset_changes.ts#L8">lib/models/asset_changes.ts:8</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This file was automatically generated by json-schema-to-typescript.
+								DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
+							and run json-schema-to-typescript to regenerate this file.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="erc20" class="tsd-anchor"></a>
 					<h3>ERC20</h3>
-					<div class="tsd-signature tsd-kind-icon">ERC20<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"Transfer"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/transfer.html" class="tsd-signature-type">Transfer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"Approval"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/approval.html" class="tsd-signature-type">Approval</a><span class="tsd-signature-symbol">)</span></div>
+					<div class="tsd-signature tsd-kind-icon">ERC20<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"transfer"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"approval"</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/erc20/ERC20.ts#L5">lib/models/erc20/ERC20.ts:5</a></li>
+							<li>Defined in lib/models/simulation.ts:102</li>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/models/asset_changes.ts#L64">lib/models/asset_changes.ts:64</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="erc721" class="tsd-anchor"></a>
 					<h3>ERC721</h3>
-					<div class="tsd-signature tsd-kind-icon">ERC721<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"Transfer"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Transfer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"Approval"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">Approval</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ApprovalForAll"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">ApprovalForAll</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"ConsecutiveTransfer"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/consecutivetransfer.html" class="tsd-signature-type">ConsecutiveTransfer</a><span class="tsd-signature-symbol">)</span></div>
+					<div class="tsd-signature tsd-kind-icon">ERC721<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"transfer"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"approval"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>approved<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"approvalForAll"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>from<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>from_id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>to_id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"consecutiveTransfer"</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/erc721/ERC721.ts#L7">lib/models/erc721/ERC721.ts:7</a></li>
+							<li>Defined in lib/models/simulation.ts:135</li>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/models/asset_changes.ts#L97">lib/models/asset_changes.ts:97</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
-					<a name="response" class="tsd-anchor"></a>
-					<h3>Response</h3>
-					<div class="tsd-signature tsd-kind-icon">Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>error<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>simulation<span class="tsd-signature-symbol">?: </span><a href="globals.html#simulation" class="tsd-signature-type">Simulation</a><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><a href="enums/responsetype.html" class="tsd-signature-type">ResponseType</a><span class="tsd-signature-symbol"> }</span></div>
+					<a name="metadata" class="tsd-anchor"></a>
+					<h3>Metadata</h3>
+					<div class="tsd-signature tsd-kind-icon">Metadata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>erc20<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TokenMetadataResponse</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>nft<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="globals.html#nftmetadata" class="tsd-signature-type">NftMetadata</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/server.ts#L27">lib/server.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/models/metadata.ts#L24">lib/models/metadata.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> error<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								<h5>erc20<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TokenMetadataResponse</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Mapping from contract address in hex to token metadata.</p>
+									</div>
+									<p><em>should</em> exist for all ERC20 contracts that appear in the Simulation.
+									Calling code needs to prepare for it not existing due to metadata retrieval failures.</p>
+								</div>
 							</li>
 							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagOptional">Optional</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> simulation<span class="tsd-signature-symbol">?: </span><a href="globals.html#simulation" class="tsd-signature-type">Simulation</a></h5>
+								<h5>nft<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="globals.html#nftmetadata" class="tsd-signature-type">NftMetadata</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Mapping from contract address in hex to nft metadata.</p>
+									</div>
+									<p>Same as above, this should exist for all erc721/1155.</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="nftmetadata" class="tsd-anchor"></a>
+					<h3>Nft<wbr>Metadata</h3>
+					<div class="tsd-signature tsd-kind-icon">Nft<wbr>Metadata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>contract<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NftContract</span><span class="tsd-signature-symbol">; </span>nfts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Nft</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/models/metadata.ts#L43">lib/models/metadata.ts:43</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Metadata containing both contract information and token information.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>contract<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NftContract</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Information about this contract.</p>
+									</div>
+								</div>
 							</li>
 							<li class="tsd-parameter">
-								<h5><span class="tsd-flag ts-flagReadonly">Readonly</span> type<span class="tsd-signature-symbol">: </span><a href="enums/responsetype.html" class="tsd-signature-type">ResponseType</a></h5>
+								<h5>nfts<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">Nft</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Mapping of token id in hex to token metadata.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="result" class="tsd-anchor"></a>
+					<h3>Result</h3>
+					<div class="tsd-signature tsd-kind-icon">Result<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>metadata<span class="tsd-signature-symbol">?: </span><a href="globals.html#metadata" class="tsd-signature-type">Metadata</a><span class="tsd-signature-symbol">; </span>simulation<span class="tsd-signature-symbol">: </span><a href="globals.html#simulation" class="tsd-signature-type">Simulation</a><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/models/metadata.ts#L13">lib/models/metadata.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Result of a simulation that optionally includes metadata.
+								The Metadata can be undefined if
+								1: we did not request metadata.
+							2. the metadata retrieval failed.</p>
+						</div>
+						<p>Caller code needs to handle cases where Metadata fails with placeholder images.</p>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata<span class="tsd-signature-symbol">?: </span><a href="globals.html#metadata" class="tsd-signature-type">Metadata</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Optional metadata.</p>
+									</div>
+								</div>
+							</li>
+							<li class="tsd-parameter">
+								<h5>simulation<span class="tsd-signature-symbol">: </span><a href="globals.html#simulation" class="tsd-signature-type">Simulation</a></h5>
+								<div class="tsd-comment tsd-typography">
+									<div class="lead">
+										<p>Simulation that ran.</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="simulateoptions" class="tsd-anchor"></a>
+					<h3>Simulate<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">Simulate<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>metadata<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/server.ts#L13">lib/server.ts:13</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>metadata<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -171,12 +282,42 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="simulation" class="tsd-anchor"></a>
 					<h3>Simulation</h3>
-					<div class="tsd-signature tsd-kind-icon">Simulation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"Revert"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">{ </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"Success"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/assetchanges.html" class="tsd-signature-type">AssetChanges</a><span class="tsd-signature-symbol">)</span></div>
+					<div class="tsd-signature tsd-kind-icon">Simulation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"revert"</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">{ </span>erc1155<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>erc20<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>erc721<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">; </span>native<span class="tsd-signature-symbol">: </span><a href="interfaces/native.html" class="tsd-signature-type">Native</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">"success"</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/49d0da8/src/lib/models/Simulation.ts#L4">lib/models/Simulation.ts:4</a></li>
+							<li>Defined in lib/models/simulation.ts:8</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This file was automatically generated by json-schema-to-typescript.
+								DO NOT MODIFY IT BY HAND. Instead, modify the source JSONSchema file,
+							and run json-schema-to-typescript to regenerate this file.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal">
+					<a name="options_defaults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> OPTIONS_<wbr>DEFAULTS</h3>
+					<div class="tsd-signature tsd-kind-icon">OPTIONS_<wbr>DEFAULTS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/server.ts#L20">lib/server.ts:20</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="options_defaults.metadata" class="tsd-anchor"></a>
+						<h3>metadata</h3>
+						<div class="tsd-signature tsd-kind-icon">metadata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/jqphu/pocket-js/blob/abf2d20/src/lib/server.ts#L21">lib/server.ts:21</a></li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -193,38 +334,17 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/responsetype.html" class="tsd-kind-icon">Response<wbr>Type</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/pocketsimulator.html" class="tsd-kind-icon">Pocket<wbr>Simulator</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/approval.html" class="tsd-kind-icon">Approval</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/approvalforall.html" class="tsd-kind-icon">Approval<wbr>For<wbr>All</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/assetchanges.html" class="tsd-kind-icon">Asset<wbr>Changes</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/consecutivetransfer.html" class="tsd-kind-icon">Consecutive<wbr>Transfer</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/native.html" class="tsd-kind-icon">Native</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/transaction.html" class="tsd-kind-icon">Transaction</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transfer.html" class="tsd-kind-icon">Transfer</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transferbatch.html" class="tsd-kind-icon">Transfer<wbr>Batch</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transfersingle.html" class="tsd-kind-icon">Transfer<wbr>Single</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#erc1155" class="tsd-kind-icon">ERC1155</a>
@@ -236,10 +356,22 @@
 						<a href="globals.html#erc721" class="tsd-kind-icon">ERC721</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#response" class="tsd-kind-icon">Response</a>
+						<a href="globals.html#metadata" class="tsd-kind-icon">Metadata</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#nftmetadata" class="tsd-kind-icon">Nft<wbr>Metadata</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#result" class="tsd-kind-icon">Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#simulateoptions" class="tsd-kind-icon">Simulate<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#simulation" class="tsd-kind-icon">Simulation</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#options_defaults" class="tsd-kind-icon">OPTIONS_<wbr>DEFAULTS</a>
 					</li>
 				</ul>
 			</nav>

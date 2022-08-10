@@ -69,7 +69,7 @@
 				</a>
 				<p>A JavaScript library to interface with the PocketUniverse</p>
 				<p>This library will run a simulation and return the asset changes.</p>
-				<p>We handle the standard ERC20, ERC721, ERC1155 but we also handle ERC2309 as an extension. We handle things like WETH having custom despoit/withdraw events. Essentially, we try to handle everything that is an asset change.</p>
+				<p>We handle the standard ERC20, ERC721, ERC1155 but we also handle ERC2309 as an extension. We handle things like WETH having custom deposit/withdraw events. Essentially, we try to handle everything that is an asset change.</p>
 				<p>Take a look at <code>src/models</code> to see how the data is returned.</p>
 				<a href="#supports" id="supports" style="color: inherit; text-decoration: none;">
 					<h1>Supports</h1>
@@ -82,8 +82,7 @@
 					<li>event Transfer(address indexed from, address indexed to, uint256 value);</li>
 					<li>event Approval(address indexed owner, address indexed spender, uint256 value);</li>
 				</ul>
-				<p>Weth
-				WETH Deposit and Withdrawal events will be converted into a Transfer.</p>
+				<p>WETH Deposit and Withdrawal events will be converted into a Transfer.</p>
 				<ul>
 					<li>event Deposit(address indexed dst, uint wad);</li>
 					<li>event Withdrawal(address indexed src, uint wad);</li>
@@ -129,38 +128,17 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/responsetype.html" class="tsd-kind-icon">Response<wbr>Type</a>
-					</li>
 					<li class=" tsd-kind-class">
 						<a href="classes/pocketsimulator.html" class="tsd-kind-icon">Pocket<wbr>Simulator</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/approval.html" class="tsd-kind-icon">Approval</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/approvalforall.html" class="tsd-kind-icon">Approval<wbr>For<wbr>All</a>
-					</li>
-					<li class=" tsd-kind-interface">
 						<a href="interfaces/assetchanges.html" class="tsd-kind-icon">Asset<wbr>Changes</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/consecutivetransfer.html" class="tsd-kind-icon">Consecutive<wbr>Transfer</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/native.html" class="tsd-kind-icon">Native</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/transaction.html" class="tsd-kind-icon">Transaction</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transfer.html" class="tsd-kind-icon">Transfer</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transferbatch.html" class="tsd-kind-icon">Transfer<wbr>Batch</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/transfersingle.html" class="tsd-kind-icon">Transfer<wbr>Single</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#erc1155" class="tsd-kind-icon">ERC1155</a>
@@ -172,10 +150,22 @@
 						<a href="globals.html#erc721" class="tsd-kind-icon">ERC721</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#response" class="tsd-kind-icon">Response</a>
+						<a href="globals.html#metadata" class="tsd-kind-icon">Metadata</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#nftmetadata" class="tsd-kind-icon">Nft<wbr>Metadata</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#result" class="tsd-kind-icon">Result</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#simulateoptions" class="tsd-kind-icon">Simulate<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#simulation" class="tsd-kind-icon">Simulation</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#options_defaults" class="tsd-kind-icon">OPTIONS_<wbr>DEFAULTS</a>
 					</li>
 				</ul>
 			</nav>
