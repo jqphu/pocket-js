@@ -6,32 +6,37 @@
       "description": "Simulation reverted with an optional string.",
       "type": "object",
       "required": [
-        "type"
+        "revert"
       ],
       "properties": {
-        "message": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "revert"
-          ]
+        "revert": {
+          "$ref": "#/definitions/Revert"
         }
-      }
+      },
+      "additionalProperties": false
     },
     {
       "description": "Successful simulation, contains a set of asset changes (which may be empty!)",
       "type": "object",
       "required": [
+        "success"
+      ],
+      "properties": {
+        "success": {
+          "$ref": "#/definitions/AssetChanges"
+        }
+      },
+      "additionalProperties": false
+    }
+  ],
+  "definitions": {
+    "AssetChanges": {
+      "type": "object",
+      "required": [
         "erc1155",
         "erc20",
         "erc721",
-        "native",
-        "type"
+        "native"
       ],
       "properties": {
         "erc1155": {
@@ -70,147 +75,154 @@
           "items": {
             "$ref": "#/definitions/Native"
           }
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "success"
-          ]
         }
       }
-    }
-  ],
-  "definitions": {
+    },
     "ERC1155": {
       "oneOf": [
         {
-          "description": "ERC1155 TransferSingle event\n\n- event TransferSingle(address indexed _operator, address indexed _from, address indexed _to, uint256 _id, uint256 _value);",
           "type": "object",
           "required": [
-            "from",
-            "id",
-            "operator",
-            "to",
-            "type",
-            "value"
+            "transferSingle"
           ],
           "properties": {
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "id": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
-            },
-            "operator": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "transferSingle"
-              ]
-            },
-            "value": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
+            "transferSingle": {
+              "$ref": "#/definitions/ERC1155TransferSingle"
             }
-          }
+          },
+          "additionalProperties": false
         },
         {
-          "description": "ERC1155 TransferBatch event\n\n- event TransferBatch(address indexed _operator, address indexed _from, address indexed _to, uint256[] _ids, uint256[] _values);",
           "type": "object",
           "required": [
-            "from",
-            "id",
-            "operator",
-            "to",
-            "type",
-            "value"
+            "transferBatch"
           ],
           "properties": {
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "id": {
-              "type": "array",
-              "items": {
-                "description": "Number in hex prefixed by 0x.",
-                "type": "string",
-                "format": "hex (u256)"
-              }
-            },
-            "operator": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "transferBatch"
-              ]
-            },
-            "value": {
-              "type": "array",
-              "items": {
-                "description": "Number in hex prefixed by 0x.",
-                "type": "string",
-                "format": "hex (u256)"
-              }
+            "transferBatch": {
+              "$ref": "#/definitions/ERC1155TransferBatch"
             }
-          }
+          },
+          "additionalProperties": false
         },
         {
-          "description": "ERC1155 ApprovalForAll Event\n\n- event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);",
           "type": "object",
           "required": [
-            "approved",
-            "from",
-            "to",
-            "type"
+            "approvalForAll"
           ],
           "properties": {
-            "approved": {
-              "type": "boolean"
-            },
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "approvalForAll"
-              ]
+            "approvalForAll": {
+              "$ref": "#/definitions/ERC1155ApprovalForAll"
             }
-          }
+          },
+          "additionalProperties": false
         }
       ]
+    },
+    "ERC1155ApprovalForAll": {
+      "description": "ERC1155 ApprovalForAll Event\n\n- event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);",
+      "type": "object",
+      "required": [
+        "approved",
+        "from",
+        "to"
+      ],
+      "properties": {
+        "approved": {
+          "type": "boolean"
+        },
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        }
+      }
+    },
+    "ERC1155TransferBatch": {
+      "description": "ERC1155 TransferBatch event\n\n- event TransferBatch(address indexed _operator, address indexed _from, address indexed _to, uint256[] _ids, uint256[] _values);",
+      "type": "object",
+      "required": [
+        "from",
+        "id",
+        "operator",
+        "to",
+        "value"
+      ],
+      "properties": {
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "id": {
+          "type": "array",
+          "items": {
+            "description": "Number in hex prefixed by 0x.",
+            "type": "string",
+            "format": "hex (u256)"
+          }
+        },
+        "operator": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "description": "Number in hex prefixed by 0x.",
+            "type": "string",
+            "format": "hex (u256)"
+          }
+        }
+      }
+    },
+    "ERC1155TransferSingle": {
+      "description": "ERC1155 TransferSingle event\n\n- event TransferSingle(address indexed _operator, address indexed _from, address indexed _to, uint256 _id, uint256 _value);",
+      "type": "object",
+      "required": [
+        "from",
+        "id",
+        "operator",
+        "to",
+        "value"
+      ],
+      "properties": {
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "id": {
+          "description": "Number in hex prefixed by 0x.",
+          "type": "string",
+          "format": "hex (u256)"
+        },
+        "operator": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "value": {
+          "description": "Number in hex prefixed by 0x.",
+          "type": "string",
+          "format": "hex (u256)"
+        }
+      }
     },
     "ERC20": {
       "oneOf": [
@@ -218,69 +230,113 @@
           "description": "An ERC20 Transfer\n\nWe include WETH Desposit/Withdraw events here as well.",
           "type": "object",
           "required": [
-            "amount",
-            "from",
-            "to",
-            "type"
+            "transfer"
           ],
           "properties": {
-            "amount": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
-            },
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "transfer"
-              ]
+            "transfer": {
+              "$ref": "#/definitions/ERC20Transfer"
             }
-          }
+          },
+          "additionalProperties": false
         },
         {
           "description": "Approval for a set of tokens.\n\nWe include approvals for 0 tokens here as well.",
           "type": "object",
           "required": [
-            "amount",
-            "from",
-            "to",
-            "type"
+            "approval"
           ],
           "properties": {
-            "amount": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
-            },
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "approval"
-              ]
+            "approval": {
+              "$ref": "#/definitions/ERC20Approval"
             }
-          }
+          },
+          "additionalProperties": false
         }
       ]
+    },
+    "ERC20Approval": {
+      "description": "ERC20 Approval Event\n\n- event Approval(address indexed owner, address indexed spender, uint256 value);",
+      "type": "object",
+      "required": [
+        "amount",
+        "from",
+        "to"
+      ],
+      "properties": {
+        "amount": {
+          "description": "Number in hex prefixed by 0x.",
+          "type": "string",
+          "format": "hex (u256)"
+        },
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        }
+      }
+    },
+    "ERC20Transfer": {
+      "description": "ERC20 Transfer event\n\n- event Transfer(address indexed _from, address indexed _to, uint256 _value);",
+      "type": "object",
+      "required": [
+        "amount",
+        "from",
+        "to"
+      ],
+      "properties": {
+        "amount": {
+          "description": "Number in hex prefixed by 0x.",
+          "type": "string",
+          "format": "hex (u256)"
+        },
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        }
+      }
+    },
+    "ERC2309ConsecutiveTransfer": {
+      "description": "ERC2309 Consecutive Transfer event\n\n- event ConsecutiveTransfer(uint256 indexed fromTokenId, uint256 toTokenId, address indexed fromAddress, address indexed toAddress);",
+      "type": "object",
+      "required": [
+        "from",
+        "from_id",
+        "to",
+        "to_id"
+      ],
+      "properties": {
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "from_id": {
+          "description": "Number in hex prefixed by 0x.",
+          "type": "string",
+          "format": "hex (u256)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "to_id": {
+          "description": "Number in hex prefixed by 0x.",
+          "type": "string",
+          "format": "hex (u256)"
+        }
+      }
     },
     "ERC721": {
       "oneOf": [
@@ -288,139 +344,105 @@
           "description": "An ERC721 Transfer",
           "type": "object",
           "required": [
-            "from",
-            "id",
-            "to",
-            "type"
+            "transfer"
           ],
           "properties": {
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "id": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "transfer"
-              ]
+            "transfer": {
+              "$ref": "#/definitions/ERC721Approval"
             }
-          }
+          },
+          "additionalProperties": false
         },
         {
           "description": "Approval for an NFT",
           "type": "object",
           "required": [
-            "from",
-            "id",
-            "to",
-            "type"
+            "approval"
           ],
           "properties": {
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "id": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "approval"
-              ]
+            "approval": {
+              "$ref": "#/definitions/ERC721Approval"
             }
-          }
+          },
+          "additionalProperties": false
         },
         {
           "description": "Approval for all NFTs",
           "type": "object",
           "required": [
-            "approved",
-            "from",
-            "to",
-            "type"
+            "approvalForAll"
           ],
           "properties": {
-            "approved": {
-              "type": "boolean"
-            },
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "approvalForAll"
-              ]
+            "approvalForAll": {
+              "$ref": "#/definitions/ERC721ApprovalForAll"
             }
-          }
+          },
+          "additionalProperties": false
         },
         {
           "description": "Consecutive Transfer",
           "type": "object",
           "required": [
-            "from",
-            "from_id",
-            "to",
-            "to_id",
-            "type"
+            "consecutiveTransfer"
           ],
           "properties": {
-            "from": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "from_id": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
-            },
-            "to": {
-              "description": "Ethereum address in hex prefixed with 0x.",
-              "type": "string",
-              "format": "hex (h160)"
-            },
-            "to_id": {
-              "description": "Number in hex prefixed by 0x.",
-              "type": "string",
-              "format": "hex (u256)"
-            },
-            "type": {
-              "type": "string",
-              "enum": [
-                "consecutiveTransfer"
-              ]
+            "consecutiveTransfer": {
+              "$ref": "#/definitions/ERC2309ConsecutiveTransfer"
             }
-          }
+          },
+          "additionalProperties": false
         }
       ]
+    },
+    "ERC721Approval": {
+      "description": "ERC721 Transfer event\n\n- event Transfer(address indexed _from, address indexed _to, uint256 indexed _tokenId);",
+      "type": "object",
+      "required": [
+        "from",
+        "id",
+        "to"
+      ],
+      "properties": {
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "id": {
+          "description": "Number in hex prefixed by 0x.",
+          "type": "string",
+          "format": "hex (u256)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        }
+      }
+    },
+    "ERC721ApprovalForAll": {
+      "description": "ERC721 ApprovalForAll Event\n\n- event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);",
+      "type": "object",
+      "required": [
+        "approved",
+        "from",
+        "to"
+      ],
+      "properties": {
+        "approved": {
+          "type": "boolean"
+        },
+        "from": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        },
+        "to": {
+          "description": "Ethereum address in hex prefixed with 0x.",
+          "type": "string",
+          "format": "hex (h160)"
+        }
+      }
     },
     "Native": {
       "type": "object",
@@ -444,6 +466,17 @@
           "description": "Ethereum address in hex prefixed with 0x.",
           "type": "string",
           "format": "hex (h160)"
+        }
+      }
+    },
+    "Revert": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
       }
     }

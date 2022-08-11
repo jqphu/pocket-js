@@ -1,12 +1,12 @@
-import 'cross-fetch/polyfill';
-
 import test from 'ava';
 
 import { Result } from './models';
 import { PocketSimulator } from './server';
 
+const SERVER_URL = 'https://eth1.pocketuniverse.app/v2';
+
 test('weth_deposit', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate({
     from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
     to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -27,26 +27,28 @@ test('weth_deposit', async (t) => {
       nft: {},
     },
     simulation: {
-      type: 'success',
-      erc20: {
-        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
+      success: {
+        erc20: {
+          '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
+            {
+              transfer: {
+                amount: '0x2ba7def3000',
+                from: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+                to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+              },
+            },
+          ],
+        },
+        erc721: {},
+        erc1155: {},
+        native: [
           {
-            type: 'transfer',
             amount: '0x2ba7def3000',
-            from: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-            to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+            from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+            to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
           },
         ],
       },
-      erc721: {},
-      erc1155: {},
-      native: [
-        {
-          amount: '0x2ba7def3000',
-          from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-          to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-        },
-      ],
     },
   } as Result;
 
@@ -54,7 +56,7 @@ test('weth_deposit', async (t) => {
 });
 
 test('weth_withdrawal', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate({
     from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
     to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
@@ -75,26 +77,28 @@ test('weth_withdrawal', async (t) => {
       nft: {},
     },
     simulation: {
-      type: 'success',
-      erc20: {
-        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
+      success: {
+        erc20: {
+          '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
+            {
+              transfer: {
+                from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+                to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+                amount: '0x11e1a300',
+              },
+            },
+          ],
+        },
+        erc721: {},
+        erc1155: {},
+        native: [
           {
-            type: 'transfer',
-            from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-            to: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            from: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
+            to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
             amount: '0x11e1a300',
           },
         ],
       },
-      erc721: {},
-      erc1155: {},
-      native: [
-        {
-          from: '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-          to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-          amount: '0x11e1a300',
-        },
-      ],
     },
   } as Result;
 
@@ -102,7 +106,7 @@ test('weth_withdrawal', async (t) => {
 });
 
 test('erc721_transfer_out', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate({
     from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
     to: '0x05844e9ae606f9867ae2047c93cac370d54ab2e1',
@@ -112,26 +116,30 @@ test('erc721_transfer_out', async (t) => {
 
   const expected = {
     simulation: {
-      type: 'success',
-      erc20: {},
-      erc721: {
-        '0x05844e9ae606f9867ae2047c93cac370d54ab2e1': [
-          {
-            type: 'approval',
-            from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-            to: '0x0000000000000000000000000000000000000000',
-            id: '0x1a46',
-          },
-          {
-            type: 'transfer',
-            from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-            to: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
-            id: '0x1a46',
-          },
-        ],
+      success: {
+        erc20: {},
+        erc721: {
+          '0x05844e9ae606f9867ae2047c93cac370d54ab2e1': [
+            {
+              approval: {
+                from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+                to: '0x0000000000000000000000000000000000000000',
+                id: '0x1a46',
+              },
+            },
+            {
+              transfer: {
+                type: 'transfer',
+                from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+                to: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
+                id: '0x1a46',
+              },
+            },
+          ],
+        },
+        erc1155: {},
+        native: [],
       },
-      erc1155: {},
-      native: [],
     },
     // This isn't exactly all the fields, some fields keep changing like time last updated. We omit those.
     metadata: {
@@ -224,7 +232,7 @@ test('erc721_transfer_out', async (t) => {
 });
 
 test('erc721_approval', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate(
     {
       from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
@@ -239,20 +247,22 @@ test('erc721_approval', async (t) => {
 
   const expected = {
     simulation: {
-      type: 'success',
-      erc20: {},
-      erc721: {
-        '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85': [
-          {
-            type: 'approval',
-            from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
-            to: '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85',
-            id: '0xe5aaf1f0d5eb87bdcade54651eebce42a3405bc2ef64fa9963c58ae6e4126c33',
-          },
-        ],
+      success: {
+        erc20: {},
+        erc721: {
+          '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85': [
+            {
+              approval: {
+                from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
+                to: '0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85',
+                id: '0xe5aaf1f0d5eb87bdcade54651eebce42a3405bc2ef64fa9963c58ae6e4126c33',
+              },
+            },
+          ],
+        },
+        erc1155: {},
+        native: [],
       },
-      erc1155: {},
-      native: [],
     },
   } as Result;
 
@@ -260,7 +270,7 @@ test('erc721_approval', async (t) => {
 });
 
 test('approval for all', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate(
     {
       from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
@@ -275,20 +285,22 @@ test('approval for all', async (t) => {
 
   const expected = {
     simulation: {
-      type: 'success',
-      erc20: {},
-      erc721: {
-        '0x0aa7420c43b8c1a7b165d216948870c8ecfe1ee1': [
-          {
-            type: 'approvalForAll',
-            from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
-            to: '0x1e0049783f008a0085193e00003d00cd54003c71',
-            approved: true,
-          },
-        ],
+      success: {
+        erc20: {},
+        erc721: {
+          '0x0aa7420c43b8c1a7b165d216948870c8ecfe1ee1': [
+            {
+              approvalForAll: {
+                from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
+                to: '0x1e0049783f008a0085193e00003d00cd54003c71',
+                approved: true,
+              },
+            },
+          ],
+        },
+        erc1155: {},
+        native: [],
       },
-      erc1155: {},
-      native: [],
     },
   } as Result;
 
@@ -296,7 +308,7 @@ test('approval for all', async (t) => {
 });
 
 test('erc721 revert', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate({
     from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
     to: '0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d',
@@ -306,8 +318,9 @@ test('erc721 revert', async (t) => {
 
   const expected = {
     simulation: {
-      type: 'revert',
-      message: 'ERC721: approve caller is not owner nor approved for all',
+      revert: {
+        message: 'ERC721: approve caller is not owner nor approved for all',
+      },
     },
   } as Result;
 
@@ -315,7 +328,7 @@ test('erc721 revert', async (t) => {
 });
 
 test('erc1155 transfer batch', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate(
     {
       from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
@@ -328,22 +341,24 @@ test('erc1155 transfer batch', async (t) => {
 
   const expected = {
     simulation: {
-      type: 'success',
-      erc20: {},
-      erc721: {},
-      erc1155: {
-        '0xc464839b6287e90a514a577f6da17b3f3f202671': [
-          {
-            type: 'transferBatch',
-            operator: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
-            from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
-            to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-            id: ['0x1'],
-            value: ['0x1'],
-          },
-        ],
+      success: {
+        erc20: {},
+        erc721: {},
+        erc1155: {
+          '0xc464839b6287e90a514a577f6da17b3f3f202671': [
+            {
+              transferBatch: {
+                operator: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
+                from: '0xb722dbfbbc8819d8f9461ecd013f9793af5ba7ac',
+                to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+                id: ['0x1'],
+                value: ['0x1'],
+              },
+            },
+          ],
+        },
+        native: [],
       },
-      native: [],
     },
   } as Result;
 
@@ -351,7 +366,7 @@ test('erc1155 transfer batch', async (t) => {
 });
 
 test('opensea accept offer', async (t) => {
-  const pocket = new PocketSimulator('https://eth1.pocketuniverse.app/v2');
+  const pocket = new PocketSimulator(SERVER_URL);
   const result = await pocket.simulate({
     from: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
     to: '0x00000000006c3852cbef3e08e8df289169ede581',
@@ -361,29 +376,32 @@ test('opensea accept offer', async (t) => {
 
   const expected = {
     simulation: {
-      type: 'success',
-      erc20: {
-        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
-          {
-            type: 'transfer',
-            from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-            to: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
-            amount: '0x1f161421c8e000',
-          },
-        ],
+      success: {
+        erc20: {
+          '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': [
+            {
+              transfer: {
+                from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+                to: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
+                amount: '0x1f161421c8e000',
+              },
+            },
+          ],
+        },
+        erc721: {
+          '0xb7116e0603f961b2ef2e924aa4706ad0ac1b7b2c': [
+            {
+              transfer: {
+                from: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
+                to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
+                id: '0x1388',
+              },
+            },
+          ],
+        },
+        erc1155: {},
+        native: [],
       },
-      erc721: {
-        '0xb7116e0603f961b2ef2e924aa4706ad0ac1b7b2c': [
-          {
-            type: 'transfer',
-            from: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
-            to: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
-            id: '0x1388',
-          },
-        ],
-      },
-      erc1155: {},
-      native: [],
     },
     metadata: {
       erc20: {

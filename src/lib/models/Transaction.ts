@@ -27,5 +27,4 @@ export interface Transaction {
    * Value to send.
    */
   value: string;
-  [k: string]: unknown;
 }

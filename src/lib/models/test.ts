@@ -5,6 +5,42 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type Simulation =
+  | {
+      message?: string | null;
+      type: 'revert';
+    }
+  | {
+      /**
+       * Mapping of contract to ERC1155 events.
+       *
+       * There could be multiple events coming from the same address. This could be empty.
+       */
+      erc1155: {
+        [k: string]: ERC1155[];
+      };
+      /**
+       * Mapping of contract to ERC20 events.
+       *
+       * There could be multiple events coming from the same address. This could be empty.
+       */
+      erc20: {
+        [k: string]: ERC20[];
+      };
+      /**
+       * Mapping of contract to ERC721 events.
+       *
+       * There could be multiple events coming from the same address. This could be empty.
+       */
+      erc721: {
+        [k: string]: ERC721[];
+      };
+      /**
+       * Native eth changes.
+       */
+      native: Native[];
+      type: 'success';
+    };
 export type ERC1155 =
   | {
       /**
@@ -28,7 +64,6 @@ export type ERC1155 =
        * Number in hex prefixed by 0x.
        */
       value: string;
-      [k: string]: unknown;
     }
   | {
       /**
@@ -46,7 +81,6 @@ export type ERC1155 =
       to: string;
       type: 'transferBatch';
       value: string[];
-      [k: string]: unknown;
     }
   | {
       approved: boolean;
@@ -59,7 +93,6 @@ export type ERC1155 =
        */
       to: string;
       type: 'approvalForAll';
-      [k: string]: unknown;
     };
 export type ERC20 =
   | {
@@ -76,7 +109,6 @@ export type ERC20 =
        */
       to: string;
       type: 'transfer';
-      [k: string]: unknown;
     }
   | {
       /**
@@ -92,7 +124,6 @@ export type ERC20 =
        */
       to: string;
       type: 'approval';
-      [k: string]: unknown;
     };
 export type ERC721 =
   | {
@@ -109,7 +140,6 @@ export type ERC721 =
        */
       to: string;
       type: 'transfer';
-      [k: string]: unknown;
     }
   | {
       /**
@@ -125,7 +155,6 @@ export type ERC721 =
        */
       to: string;
       type: 'approval';
-      [k: string]: unknown;
     }
   | {
       approved: boolean;
@@ -138,7 +167,6 @@ export type ERC721 =
        */
       to: string;
       type: 'approvalForAll';
-      [k: string]: unknown;
     }
   | {
       /**
@@ -158,40 +186,8 @@ export type ERC721 =
        */
       to_id: string;
       type: 'consecutiveTransfer';
-      [k: string]: unknown;
     };
 
-export interface AssetChanges {
-  /**
-   * Mapping of contract to ERC1155 events.
-   *
-   * There could be multiple events coming from the same address. This could be empty.
-   */
-  erc1155: {
-    [k: string]: ERC1155[];
-  };
-  /**
-   * Mapping of contract to ERC20 events.
-   *
-   * There could be multiple events coming from the same address. This could be empty.
-   */
-  erc20: {
-    [k: string]: ERC20[];
-  };
-  /**
-   * Mapping of contract to ERC721 events.
-   *
-   * There could be multiple events coming from the same address. This could be empty.
-   */
-  erc721: {
-    [k: string]: ERC721[];
-  };
-  /**
-   * Native eth changes.
-   */
-  native: Native[];
-  [k: string]: unknown;
-}
 export interface Native {
   /**
    * Number in hex prefixed by 0x.
@@ -205,5 +201,4 @@ export interface Native {
    * Ethereum address in hex prefixed with 0x.
    */
   to: string;
-  [k: string]: unknown;
 }
