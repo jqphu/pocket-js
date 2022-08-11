@@ -1,3 +1,5 @@
+import 'cross-fetch/polyfill';
+
 import test from 'ava';
 
 import { Result } from './models';
@@ -129,7 +131,6 @@ test('erc721_transfer_out', async (t) => {
             },
             {
               transfer: {
-                type: 'transfer',
                 from: '0x1a8906a0ebb799ed4c0e385d7493d11701700d3a',
                 to: '0x85c153aae1f101af08151863306d9e0b823ea1b5',
                 id: '0x1a46',
