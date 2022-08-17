@@ -5,7 +5,7 @@ import test from 'ava';
 import { Result } from './models';
 import { PocketSimulator } from './server';
 
-const SERVER_URL = 'https://eth1.pocketuniverse.app/v2';
+const SERVER_URL = 'http://localhost:3000/v2';
 
 test('weth_deposit', async (t) => {
   const pocket = new PocketSimulator(SERVER_URL);
@@ -146,85 +146,18 @@ test('erc721_transfer_out', async (t) => {
     metadata: {
       erc20: {},
       nft: {
-        '0x05844e9ae606f9867ae2047c93cac370d54ab2e1': {
-          contract: {
-            address: '0x05844e9ae606f9867ae2047c93cac370d54ab2e1',
-            name: 'AO Art Ball',
-            symbol: 'ARTB',
-            totalSupply: '6776',
-            tokenType: 'ERC721',
+        "0x05844e9ae606f9867ae2047c93cac370d54ab2e1": {
+          "contract": {
+            "name": "AO Art Ball",
+            "collection_url": "https://opensea.io/collection/ao-art-ball",
+            "verified": true
           },
-          nfts: {
-            '0x1a46': {
-              contract: {
-                address: '0x05844e9ae606f9867ae2047c93cac370d54ab2e1',
-              },
-              tokenId: '6726',
-              tokenType: 'ERC721',
-              title: 'AO Art Ball #6726',
-              description:
-                'The AO Art Ball, the first official Australian Open (AO) NFT. One court sectioned into 6776 plots, each assigned a unique randomly generated Art Ball and updated with official winning match data. Own the court, own the moment. Dunlop is the Official Ball of the AO.',
-              rawMetadata: {
-                name: 'AO Art Ball #6726',
-                description:
-                  'The AO Art Ball, the first official Australian Open (AO) NFT. One court sectioned into 6776 plots, each assigned a unique randomly generated Art Ball and updated with official winning match data. Own the court, own the moment. Dunlop is the Official Ball of the AO.',
-                image:
-                  'ipfs://QmXR3jHnDLeRpBjqXsp9KyBJTHFcW48zWCjNo2Zv8QD8ou/6726.jpg',
-                external_url: 'https://ao.artball.io',
-                attributes: [
-                  {
-                    value: '383',
-                    trait_type: 'Plot Number',
-                  },
-                  {
-                    value: '20',
-                    trait_type: 'Plot X Coordinate',
-                  },
-                  {
-                    value: '4',
-                    trait_type: 'Plot Y Coordinate',
-                  },
-                  {
-                    value: 'Generative',
-                    trait_type: 'Ball Type',
-                  },
-                  {
-                    value: 'Line Call',
-                    trait_type: 'Pattern',
-                  },
-                  {
-                    value: 'Small',
-                    trait_type: 'Wrap',
-                  },
-                  {
-                    value: 'Delete',
-                    trait_type: 'Overlay',
-                  },
-                  {
-                    value: '40',
-                    trait_type: 'Rally',
-                  },
-                  {
-                    value: 'AO Green',
-                    trait_type: 'Colour',
-                  },
-                  {
-                    value: 'Tetradic',
-                    trait_type: 'Scheme',
-                  },
-                  {
-                    value: 'Black',
-                    trait_type: 'Logo',
-                  },
-                  {
-                    value: 'Slice',
-                    trait_type: 'Shot',
-                  },
-                ],
-              },
-            },
-          },
-        },
+          "nfts": {
+            "0x1a46": {
+              "name": "AO Art Ball #6726",
+            }
+          }
+        }
       },
     },
   };
@@ -242,7 +175,7 @@ test('erc721_approval', async (t) => {
       value: '0x0',
     },
     {
-      metadata: false,
+      metadata: true,
     }
   );
 
@@ -265,9 +198,26 @@ test('erc721_approval', async (t) => {
         native: [],
       },
     },
+    metadata: {
+      "erc20": {},
+      "nft": {
+        "0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85": {
+          "contract": {
+            "name": "ENS: Ethereum Name Service",
+            "collection_url": "https://opensea.io/collection/ens",
+            "verified": true
+          },
+          "nfts": {
+            "0xe5aaf1f0d5eb87bdcade54651eebce42a3405bc2ef64fa9963c58ae6e4126c33": {
+              "name": "jqphu.eth",
+            }
+          }
+        }
+      }
+    }
   } as Result;
 
-  t.deepEqual(expected, result);
+  t.like(result, expected);
 });
 
 test('approval for all', async (t) => {
@@ -280,7 +230,7 @@ test('approval for all', async (t) => {
       value: '0x0',
     },
     {
-      metadata: false,
+      metadata: true,
     }
   );
 
@@ -303,9 +253,22 @@ test('approval for all', async (t) => {
         native: [],
       },
     },
+    metadata: {
+      "erc20": {},
+      "nft": {
+        "0x0aa7420c43b8c1a7b165d216948870c8ecfe1ee1": {
+          "contract": {
+            "name": "Thingdoms",
+            "collection_url": "https://opensea.io/collection/thingdoms",
+            "verified": true
+          },
+          "nfts": {}
+        }
+      }
+    }
   } as Result;
 
-  t.deepEqual(expected, result);
+  t.like(result, expected);
 });
 
 test('erc721 revert', async (t) => {
@@ -337,7 +300,7 @@ test('erc1155 transfer batch', async (t) => {
       data: '0x2eb2c2d6000000000000000000000000b722dbfbbc8819d8f9461ecd013f9793af5ba7ac0000000000000000000000001a8906a0ebb799ed4c0e385d7493d11701700d3a00000000000000000000000000000000000000000000000000000000000000a000000000000000000000000000000000000000000000000000000000000000e0000000000000000000000000000000000000000000000000000000000000012000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000',
       value: '0x0',
     },
-    { metadata: false }
+    { metadata: true }
   );
 
   const expected = {
@@ -361,9 +324,26 @@ test('erc1155 transfer batch', async (t) => {
         native: [],
       },
     },
+    metadata: {
+      "erc20": {},
+      "nft": {
+        "0xc464839b6287e90a514a577f6da17b3f3f202671": {
+          "contract": {
+            "name": "Superlative Artifacts",
+            "collection_url": "https://opensea.io/collection/superlative-artifacts",
+            "verified": false
+          },
+          "nfts": {
+            "0x1": {
+              "name": "The Remnant",
+            }
+          }
+        }
+      }
+    }
   } as Result;
 
-  t.deepEqual(expected, result);
+  t.like(result, expected);
 });
 
 test('opensea accept offer', async (t) => {
@@ -405,102 +385,29 @@ test('opensea accept offer', async (t) => {
       },
     },
     metadata: {
-      erc20: {
-        '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2': {
-          decimals: 18,
-          logo: 'https://static.alchemyapi.io/images/assets/2396.png',
-          name: 'WETH',
-          symbol: 'WETH',
-        },
+      "erc20": {
+        "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": {
+          "decimals": 18,
+          "logo": "https://static.alchemyapi.io/images/assets/2396.png",
+          "name": "WETH",
+          "symbol": "WETH"
+        }
       },
-      nft: {
-        '0xb7116e0603f961b2ef2e924aa4706ad0ac1b7b2c': {
-          contract: {
-            address: '0xb7116e0603f961b2ef2e924aa4706ad0ac1b7b2c',
-            name: 'PixelMinions',
-            symbol: 'PXMS',
-            totalSupply: '1',
-            tokenType: 'ERC721',
+      "nft": {
+        "0xb7116e0603f961b2ef2e924aa4706ad0ac1b7b2c": {
+          "contract": {
+            "name": "The Pixel Minions",
+            "collection_url": "https://opensea.io/collection/thepixelminions",
+            "verified": false
           },
-          nfts: {
-            '0x1388': {
-              contract: {
-                address: '0xb7116e0603f961b2ef2e924aa4706ad0ac1b7b2c',
-              },
-              tokenId: '5000',
-              tokenType: 'ERC721',
-              title: '#5000',
-              description: 'bananaaa!!!',
-              rawMetadata: {
-                image:
-                  'https://pixelminion.mypinata.cloud/ipfs/QmTG2H5GDzn17ydr8SP3D2wxyTjAfCUVGkZVKKeD8myzt5/5000.png',
-                seller_fee_basis_points: 1000,
-                external_url: '',
-                fee_recipient: '0x6dCF1AA90ad2D6EF0F9E23979e8166c765889005',
-                name: '#5000',
-                description: 'bananaaa!!!',
-                attributes: [
-                  {
-                    value: 'bi-do',
-                    trait_type: 'backgrounds',
-                  },
-                  {
-                    value: 'main-yellow',
-                    trait_type: 'body color',
-                  },
-                  {
-                    value: 'standing',
-                    trait_type: 'footing',
-                  },
-                  {
-                    value: 'arm-down',
-                    trait_type: 'left arm',
-                  },
-                  {
-                    value: 'arm-up',
-                    trait_type: 'right arm',
-                  },
-                  {
-                    value: 'dark-red',
-                    trait_type: 'clothing',
-                  },
-                  {
-                    value: 'tongue-out',
-                    trait_type: 'mouth',
-                  },
-                  {
-                    value: 'goggles',
-                    trait_type: 'goggles',
-                  },
-                  {
-                    value: 'shading',
-                    trait_type: 'shading',
-                  },
-                  {
-                    value: 'black-pupil',
-                    trait_type: 'eyes',
-                  },
-                  {
-                    value: 'papoi',
-                    trait_type: 'accessories',
-                  },
-                ],
-                compiler: 'https://the-nft-generator.com',
-                properties: {
-                  files: [
-                    {
-                      type: 'image/png',
-                      uri: '5000.png',
-                    },
-                  ],
-                  creators: [],
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+          "nfts": {
+            "0x1388": {
+              "name": "#5000",
+            }
+          }
+        }
+      }
+    }
   };
 
   t.like(result, expected);

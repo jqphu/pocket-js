@@ -32,8 +32,15 @@ export class PocketSimulator {
      * e.g. `https://eth1.pocketuniverse.app/v2`
      */
     readonly SERVER_URL: string
-  ) {}
+  ) { }
 
+  /**
+   * Simulate a transaction.
+   *
+   * transaction: Valid transaction to simulate.
+   * options: Options to add. If metadata is requested to be retrieved, this
+   * will add 200-300 ms latency to the request.
+   */
   async simulate(
     transaction: Transaction,
     options: SimulateOptions = OPTIONS_DEFAULTS

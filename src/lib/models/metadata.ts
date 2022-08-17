@@ -1,4 +1,4 @@
-import type { Nft, NftContract, TokenMetadataResponse } from 'alchemy-sdk';
+import type { TokenMetadataResponse } from 'alchemy-sdk';
 
 import type { Simulation } from './simulation';
 
@@ -37,6 +37,44 @@ export type Metadata = {
   nft: Record<string, NftMetadata>;
 };
 
+export type NftContract = {
+  /**
+   * Contract name.
+   */
+  name?: string;
+
+  /**
+   * Collection Image.
+   *
+   * This may be a CDN url, an IPFS Gateway URL.
+   */
+  image_url?: string;
+
+  /**
+   * Url of the collection on a marketplace.
+   */
+  collection_url?: string,
+
+  /**
+   * Whether this contract is verified on OpenSea.
+   */
+  verified?: boolean;
+};
+
+export type Nft = {
+  /**
+   * Nft name.
+   */
+  name?: string;
+
+  /**
+   * Image url
+   *
+   * This may be a CDN url, an IPFS Gateway URL or directly SVG data.
+   */
+  image_url?: string;
+};
+
 /**
  * Metadata containing both contract information and token information.
  */
@@ -53,4 +91,4 @@ export type NftMetadata = {
 };
 
 // TODO(jqphu): wrap these in pocket universe types and don't expose alchemy directly.
-export type { NftContract, Nft, TokenMetadataResponse } from 'alchemy-sdk';
+export type { TokenMetadataResponse } from 'alchemy-sdk';
